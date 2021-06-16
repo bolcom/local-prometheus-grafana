@@ -1,0 +1,6 @@
+
+# don't commit the data please :)
+prometheus/data/data
+
+# mac stuff
+.DS_Store

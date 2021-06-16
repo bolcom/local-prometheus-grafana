@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 9090:9090
+    volumes:
+      - ${PWD}/prometheus/config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ${PWD}/prometheus/data:/prometheus
+    command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=1y --web.enable-admin-api"
+    depends_on:
+      - node-exporter
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    restart: unless-stopped
+    tty: true
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - ${PWD}/grafana/runtime-data:/var/lib/grafana
+      - ${PWD}/grafana/datasources/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+    environment:
+      - GF_SERVER_ROOT_URL=https://localhost
+      - GF_SECURITY_ADMIN_USER=foo
+      - GF_SECURITY_ADMIN_PASSWORD=bar
+      - GF_USERS_ALLOW_SIGN_UP=false
+
+  node-exporter:
+    container_name: node-exporter
+    image: quay.io/prometheus/node-exporter:latest
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 9100:9100
