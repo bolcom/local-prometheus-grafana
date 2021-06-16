@@ -5,11 +5,11 @@ to test / validate your metrics...
 Prometheus is configured to "scrape" the node-exporter container. This container is not necessary, but illustrates how you can add your own LOCAL Java/Go service to be scraped as well.
 
 ## how to start
-- first download required files
+- First download required files: https://github.com/bolcom/local-prometheus-grafana/archive/refs/heads/master.zip
 - Unzip contents
-- run `docker-compose up` inside directory.
-- then open grafana: http://localhost:3000/.
-- log-in with username `foo` and password `bar`.
+- Run `docker-compose up` inside directory.
+- Then open grafana: http://localhost:3000/.
+- Log-in with username `foo` and password `bar`.
 - There is already a dashboard `test` created with one graph, fetching data out of the local prometheus instance. Wait a few minutes, then the data will arrive.
 
 ## exposed services
