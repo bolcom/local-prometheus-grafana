@@ -24,4 +24,4 @@ Simple, change the prometheus config file (`prometheus.yml`) and add a new targe
 
 ## More info
 
-See this blogpost: << todo >>
+See this blogpost: https://techlab.bol.com/how-to-validate-your-apps-metrics-on-a-local-grafana-instance/
