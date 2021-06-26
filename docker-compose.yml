@@ -29,7 +29,6 @@ services:
       - ${PWD}/grafana/runtime-data:/var/lib/grafana
       - ${PWD}/grafana/datasources/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
     environment:
-      - GF_SERVER_ROOT_URL=https://localhost
       - GF_SECURITY_ADMIN_USER=foo
       - GF_SECURITY_ADMIN_PASSWORD=bar
       - GF_USERS_ALLOW_SIGN_UP=false
