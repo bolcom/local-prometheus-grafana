@@ -3,7 +3,7 @@ global:
 
 scrape_configs:
 
-  # this job is just to illustrate that evertyting works
+  # this job is just to illustrate that everything works
   # the docker-compose file also runs node-exporter.
   # The section below tells prometheus to scrape that intance
   - job_name: "node-exporter"
